@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+.header {
+    background-color: gray;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.header a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.container {
+    margin-top: 60px;
+}
+.banner {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0;
+    cursor: pointer;
+    color: blue;
+}
+.options {
+    display: none;
+    margin-top: 20px;
+}
+.options button {
+    margin: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
