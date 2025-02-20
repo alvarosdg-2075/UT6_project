@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+label {
+    display: block;
+    margin-top: 10px;
+}
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+.genero-opciones {
+    display: flex;
+    gap: 10px; /* Espacio entre las opciones */
+}
+.genero-opciones label {
+    margin-top: 0; /* Elimina el margen superior de las etiquetas */
+}
