@@ -6,15 +6,60 @@ body {
 
 .header {
     background-color: #333;
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 10px;
     text-align: center;
+    position: relative;
 }
 
 .header a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilo del menú desplegable */
+.options {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Estilos de los títulos de las secciones */
+.submenu-title {
+    font-weight: bold;
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+}
+
+/* Submenús */
+.submenu {
+    margin-bottom: 10px;
+}
+
+.submenu-content button {
+    width: 100%;
+    padding: 6px;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.submenu-content button:hover {
+    background-color: #ddd;
 }
 
 .container {
@@ -27,28 +72,4 @@ body {
     text-align: center;
     cursor: pointer;
     margin-top: 20px;
-}
-
-.options {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.options button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    border: none;
-    background: none;
-}
-
-.options button:hover {
-    background-color: #ddd;
 }
