@@ -34,3 +34,16 @@ input[type="submit"]:hover {
 .genero-opciones label {
     margin-top: 0; /* Elimina el margen superior de las etiquetas */
 }
+.header {
+    background-color: #333;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+.header a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
