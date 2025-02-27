@@ -11,16 +11,70 @@
         <a href="#" onclick="toggleOptions()">Personalizer</a>
         <a href="Form.html">Form</a>
         <a href="#">Images</a>
+        <div class="options" id="optionsPanel">
+            <div class="submenu">
+                <span class="submenu-title">Change Text Style</span>
+                <div class="submenu-content">
+                    <button onclick="changeTextStyle('Arial')">Arial</button>
+                    <button onclick="changeTextStyle('Verdana')">Verdana</button>
+                    <button onclick="changeTextStyle('Georgia')">Georgia</button>
+                    <button onclick="changeTextStyle('Courier New')">Courier New</button>
+                    <button onclick="changeTextStyle('Tahoma')">Tahoma</button>
+                </div>
+            </div>
+            <div class="submenu">
+                <span class="submenu-title">Change Color</span>
+                <div class="submenu-content">
+                    <button onclick="changeTextColor('#ff5733')" style="color:#ff5733;">Red</button>
+                    <button onclick="changeTextColor('#33ff57')" style="color:#33ff57;">Green</button>
+                    <button onclick="changeTextColor('#3357ff')" style="color:#3357ff;">Blue</button>
+                    <button onclick="changeTextColor('#ff33a1')" style="color:#ff33a1;">Pink</button>
+                    <button onclick="changeTextColor('#000000')" style="color:#000000;">Black</button>
+                </div>
+            </div>
+            <div class="submenu">
+                <span class="submenu-title">Change Text Size</span>
+                <div class="submenu-content">
+                    <button onclick="changeTextSize('14px')">Small</button>
+                    <button onclick="changeTextSize('18px')">Medium</button>
+                    <button onclick="changeTextSize('24px')">Large</button>
+                    <button onclick="changeTextSize('32px')">Extra Large</button>
+                </div>
+            </div>
+        </div>
     </div>
+    
     <div class="container">
         <h1>Welcome to Personalizer</h1>
         <p id="paragraph">This is a paragraph that you can adapt its content.</p>
-        <div class="banner" onclick="changeText()">Click to Personalizer banner.</div>
-        <div class="options" id="optionsPanel">
-            <button onclick="changeBgColor()">Bg_color</button>
-            <button onclick="changeTextStyle()">Change_letters</button>
-        </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        function toggleOptions() {
+            let panel = document.getElementById("optionsPanel");
+            panel.style.display = (panel.style.display === "block") ? "none" : "block";
+        }
+
+        document.addEventListener("click", function(event) {
+            let panel = document.getElementById("optionsPanel");
+            let personalizer = document.querySelector(".header a");
+
+            if (event.target !== panel && event.target !== personalizer && !panel.contains(event.target)) {
+                panel.style.display = "none";
+            }
+        });
+
+        function changeTextStyle(font) {
+            document.getElementById("paragraph").style.fontFamily = font;
+        }
+
+        function changeTextColor(color) {
+            document.getElementById("paragraph").style.color = color;
+        }
+
+        function changeTextSize(size) {
+            document.getElementById("paragraph").style.fontSize = size;
+        }
+    </script>
 </body>
 </html>
