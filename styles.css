@@ -19,7 +19,6 @@ body {
     cursor: pointer;
 }
 
-/* Estilo del menú desplegable */
 .options {
     display: none;
     position: absolute;
@@ -34,7 +33,6 @@ body {
     padding: 10px;
 }
 
-/* Estilos de los títulos de las secciones */
 .submenu-title {
     font-weight: bold;
     display: block;
@@ -42,8 +40,6 @@ body {
     border-bottom: 1px solid #ddd;
     margin-bottom: 5px;
 }
-
-/* Submenús */
 .submenu {
     margin-bottom: 10px;
 }
@@ -64,12 +60,4 @@ body {
 
 .container {
     padding: 20px;
-}
-
-.banner {
-    background-color: #f4f4f4;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    margin-top: 20px;
 }
