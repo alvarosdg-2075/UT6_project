@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: rgb(0, 0, 0);
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .navbar {
+            background: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            gap: 15px;
+        }
+        .container {
+            margin: 20px;
+        }
+        .card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px 0;
+        }
+        img {
+            width: 100px;
+            height: auto;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+
+        .dark-mode .header {
+            background-color: #222;
+        }
+
+        .dark-mode input,
+        .dark-mode select {
+            background-color: #333;
+            color: white;
+            border: 1px solid #555;
+        }
+
+        .dark-mode input[type="submit"] {
+            background-color: #008CBA;
+        }
+
+        .dark-mode input[type="submit"]:hover {
+            background-color: #0077A3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="personalizer.html">Personalizer</a>
+        <a href="Form.html">Form</a>
+        <a href="Images.html">Images</a>
+        <a href="#" id="mode-toggle" onclick="toggleMode()">Mode</a>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <h3>Magic Button: Create & Change Image</h3>
+            <button onclick="changeImage()">Change Image!</button>
+            <br><br>
+            <img id="dynamicImage" src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JS Logo">
+        </div>
+        
+        <div class="card">
+            <h3>AutoLoading</h3>
+            <img id="autoImage" src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS3 Logo">
+        </div>
+    </div>
+    
+    <script>
+        let images = [
+            "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+            "https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg",
+            "https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg"
+        ];
+        let index = 0;
+
+        function changeImage() {
+            index = (index + 1) % images.length;
+            document.getElementById("dynamicImage").src = images[index];
+        }
+
+        let autoIndex = 0;
+        function autoLoadImages() {
+            autoIndex = (autoIndex + 1) % images.length;
+            document.getElementById("autoImage").src = images[autoIndex];
+        }
+
+        setInterval(autoLoadImages, 2000);
+        function toggleMode() {
+            const body = document.body;
+            const modeToggle = document.getElementById("mode-toggle");
+
+            if (body.classList.contains("dark-mode")) {
+                body.classList.remove("dark-mode");
+                modeToggle.textContent = "Light";
+            } else {
+                body.classList.add("dark-mode");
+                modeToggle.textContent = "Dark";
+            }
+        }
+    </script>
+</body>
+</html>
