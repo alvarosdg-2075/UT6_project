@@ -10,7 +10,7 @@
     <div class="header">
         <a href="#" onclick="toggleOptions()">Personalizer</a>
         <a href="Form.html">Form</a>
-        <a href="#">Images</a>
+        <a href="Images.html">Images</a>
         <div class="options" id="optionsPanel">
             <div class="submenu">
                 <span class="submenu-title">Change Text Style</span>
@@ -25,11 +25,11 @@
             <div class="submenu">
                 <span class="submenu-title">Change Color</span>
                 <div class="submenu-content">
-                    <button onclick="changeTextColor('#ff5733')" style="color:#ff5733;">Red</button>
-                    <button onclick="changeTextColor('#33ff57')" style="color:#33ff57;">Green</button>
-                    <button onclick="changeTextColor('#3357ff')" style="color:#3357ff;">Blue</button>
-                    <button onclick="changeTextColor('#ff33a1')" style="color:#ff33a1;">Pink</button>
-                    <button onclick="changeTextColor('#000000')" style="color:#000000;">Black</button>
+                    <button onclick="changeTextColor('#ff5733')">Rojo</button>
+                    <button onclick="changeTextColor('#33ff57')">Verde</button>
+                    <button onclick="changeTextColor('#3357ff')">Azul</button>
+                    <button onclick="changeTextColor('#ff33a1')">Rosa</button>
+                    <button onclick="changeTextColor('#000000')">Negro</button>
                 </div>
             </div>
             <div class="submenu">
@@ -41,12 +41,22 @@
                     <button onclick="changeTextSize('32px')">Extra Large</button>
                 </div>
             </div>
+            <div class="submenu">
+                <span class="submenu-title">Change Background Color</span>
+                <div class="submenu-content">
+                    <button onclick="changeBackgroundColor('#ad0000')">Rojo</button>
+                    <button onclick="changeBackgroundColor('#2feb00')">Verde</button>
+                    <button onclick="changeBackgroundColor('#1c9ec9')">Azul</button>
+                    <button onclick="changeBackgroundColor('#fc0bfc')">Rosa</button>
+                    <button onclick="changeBackgroundColor('#b29c0e')">Amarillo Oscuro</button>
+                </div>
+            </div>
         </div>
     </div>
     
     <div class="container">
         <h1>Welcome to Personalizer</h1>
-        <p id="paragraph">This is a paragraph that you can adapt its content.</p>
+        <p id="paragraph">This is a paragraph that you can adapt its content. <br><br>Click on Personalizer banner</p>
     </div>
 
     <script>
@@ -74,6 +84,10 @@
 
         function changeTextSize(size) {
             document.getElementById("paragraph").style.fontSize = size;
+        }
+
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
         }
     </script>
 </body>
