@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="FormStyles.css">
 </head>
 <body>
-    <div class="header"></div>
-    <a href="personalizer.html" onclick="toggleOptions()">Personalizer</a>
-    <a href="Form.html">Form</a>
-    <a href="#">Images</a>
-    <form action="/enviar" method="post" onsubmit="return validarEmail()">
+    <div class="header">
+        <a href="personalizer.html">Personalizer</a>
+        <a href="Form.html">Form</a>
+        <a href="Images.html">Images</a>
+        <a href="#" id="mode-toggle" onclick="toggleMode()">Mode</a>
+    </div>
+    
+    <form action="#" method="get" onsubmit="return validarEmail()">
         <label for="nombre">Pon tu nombre:</label>
         <input type="text" id="nombre" name="nombre" required>
 
@@ -30,60 +33,101 @@
 
         <label for="pais">Selecciona tu país:</label>
         <select id="pais" name="pais" required onchange="mostrarOpciones()">
-            <option value="">--Seleccione un país--</option>
+            <option value="">Seleccione un país</option>
             <option value="es">España</option>
             <option value="mx">Estados Unidos</option>
             <option value="ar">Japón</option>
         </select>
 
         <div id="opciones-adicionales"></div>
+        <div id="sub-opciones"></div>
 
         <input type="submit" value="Enviar">
     </form>
-    <script>function validarEmail() {
-        const email = document.getElementById('email').value;
-        const dominio = email.split('@')[1];
-        if (!dominio || !dominio.includes('.')) {
-            alert('El email debe contener un dominio válido después de @');
-            return false;
+
+    <script>
+        function validarEmail() {
+            const email = document.getElementById('email').value;
+            const dominio = email.split('@')[1];
+            if (!dominio || !dominio.includes('.')) {
+                alert('El email debe contener un dominio válido después de @');
+                return false;
+            }
+            return true;
         }
-        return true;
-    }
-    
-    function mostrarOpciones() {
-        const pais = document.getElementById('pais').value;
-        const opcionesDiv = document.getElementById('opciones-adicionales');
-        let opcionesHTML = '';
-        
-        if (pais === 'es') {
-            opcionesHTML = `
-                <label for="comunidad">Selecciona tu comunidad autónoma:</label>
-                <select id="comunidad" name="comunidad" required>
-                    <option value="navarra">Navarra</option>
-                    <option value="madrid">Madrid</option>
-                    <option value="cataluña">Cataluña</option>
-                </select>
-            `;
-        } else if (pais === 'mx') {
-            opcionesHTML = `
-                <label for="estado">Selecciona tu estado:</label>
-                <select id="estado" name="estado" required>
-                    <option value="california">California</option>
-                    <option value="florida">Florida</option>
-                    <option value="texas">Texas</option>
-                </select>
-            `;
-        } else if (pais === 'ar') {
-            opcionesHTML = `
-                <label for="ciudad">Selecciona tu ciudad:</label>
-                <select id="ciudad" name="ciudad" required>
-                    <option value="tokyo">Tokyo</option>
-                    <option value="osaka">Osaka</option>
-                    <option value="kyoto">Kyoto</option>
-                </select>
-            `;
+
+        function mostrarOpciones() {
+            const pais = document.getElementById('pais').value;
+            const opcionesDiv = document.getElementById('opciones-adicionales');
+            const subOpcionesDiv = document.getElementById('sub-opciones');
+            opcionesDiv.innerHTML = '';
+            subOpcionesDiv.innerHTML = '';
+            
+            let opcionesHTML = '';
+
+            if (pais === 'es') {
+                opcionesHTML = `
+                    <label for="comunidad">Selecciona tu comunidad autónoma:</label>
+                    <select id="comunidad" name="comunidad" required onchange="mostrarSubOpciones()">
+                        <option value="">Seleccione una comunidad</option>
+                        <option value="navarra">Navarra</option>
+                        <option value="madrid">Madrid</option>
+                        <option value="cataluña">Cataluña</option>
+                    </select>
+                `;
+            } else if (pais === 'mx') {
+                opcionesHTML = `
+                    <label for="estado">Selecciona tu estado:</label>
+                    <select id="estado" name="estado" required onchange="mostrarSubOpciones()">
+                        <option value="">Seleccione un estado</option>
+                        <option value="california">California</option>
+                        <option value="florida">Florida</option>
+                        <option value="texas">Texas</option>
+                    </select>
+                `;
+            } else if (pais === 'ar') {
+                opcionesHTML = `
+                    <label for="region">Selecciona tu región:</label>
+                    <select id="region" name="region" required onchange="mostrarSubOpciones()">
+                        <option value="">Seleccione una región</option>
+                        <option value="kanto">Kanto</option>
+                        <option value="kansai">Kansai</option>
+                    </select>
+                `;
+            }
+
+            opcionesDiv.innerHTML = opcionesHTML;
         }
-        
-        opcionesDiv.innerHTML = opcionesHTML;
-    }</script>
+
+        function mostrarSubOpciones() {
+            const comunidad = document.getElementById('comunidad')?.value;
+            const estado = document.getElementById('estado')?.value;
+            const region = document.getElementById('region')?.value;
+            const subOpcionesDiv = document.getElementById('sub-opciones');
+            let subOpcionesHTML = '';
+
+            if (region === 'kanto') {
+                subOpcionesHTML = `
+                    <label for="ciudad-kanto">Selecciona tu ciudad:</label>
+                    <select id="ciudad-kanto" name="ciudad-kanto" required>
+                        <option value="tokio">Tokio</option>
+                        <option value="yokohama">Yokohama</option>
+                        <option value="saitama">Saitama</option>
+                    </select>
+                `;
+            } else if (region === 'kansai') {
+                subOpcionesHTML = `
+                    <label for="ciudad-kansai">Selecciona tu ciudad:</label>
+                    <select id="ciudad-kansai" name="ciudad-kansai" required>
+                        <option value="osaka">Osaka</option>
+                        <option value="kobe">Kobe</option>
+                        <option value="kioto">Kioto</option>
+                    </select>
+                `;
+            }
+            
+            subOpcionesDiv.innerHTML = subOpcionesHTML;
+        }
+    </script>
+</body>
 </html>
